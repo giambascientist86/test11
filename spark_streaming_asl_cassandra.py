@@ -151,7 +151,7 @@ def main():
         df = get_streaming_dataframe(spark, brokers, topic)
         if df:
             transformed_df = transform_streaming_data(df)
-            df_prediction = als_collaborative_filter(transformed_df)
+            df_prediction = als_collaborative_filter(transformed_df, 'timestamp')
             initiate_streaming_to_cassandra(df_prediction)
 
 
